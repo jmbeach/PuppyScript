@@ -1,4 +1,5 @@
 var t = require("../lexer/lextypes.js"),
+	colors = require("colors"),
 	util = require("util");
 module.exports.debug = false;
 
@@ -80,7 +81,7 @@ function Recognizer(lexer) {
 			return self.advance();
 		}
 		debug(self.current.type);
-		var err = new Error(util.format("Parse error: looking for %s, found %s instead\n",type.toString(),self.current.toString()));
+		var err = new Error("Parser Error: ".cyan + "looking for ".red+type.toString().underline.yellow+" found ".red +self.current.toString().underline.yellow+ " instead\n".red);
 		throw err;
 		return null;
 	}
