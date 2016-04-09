@@ -1,0 +1,17 @@
+{
+  "name": "puppy-script",
+  "version": "0.0.1",
+  "description": "A dynamic programming language which aims to distract you from getting anything done by making most keywords related to dogs / puppies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "puppy",
+    "pup",
+    "puppy",
+    "script"
+  ],
+  "author": "Jared Beach",
+  "license": "MIT"
+}
