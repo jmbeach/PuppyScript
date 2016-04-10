@@ -81,7 +81,9 @@ function Recognizer(lexer) {
 			return self.advance();
 		}
 		debug(self.current.type);
-		var err = new Error("Parser Error: ".cyan + "looking for ".red+type.toString().underline.yellow+" found ".red +self.current.toString().underline.yellow+ " instead\n".red);
+		var line = lexer.line();
+		var pointer = lexer.pointerToErr();
+		var err = new Error("Parser Error: ".cyan + "looking for ".red+type.toString().underline.yellow+" found ".red +self.current.toString().underline.yellow+ " instead\n\t".red+"line".underline.yellow+": "+lexer.lineNumber()+ "\n\t"+"file".underline.yellow+": "+lexer.fileName+"\n\t"+line.text + "\n\t"+pointer);
 		throw err;
 		return null;
 	}

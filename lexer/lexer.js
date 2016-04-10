@@ -22,6 +22,7 @@ module.exports.lexeme = lexeme;
 function File(opts) {
   var self = this;
   var whiteSpace = [9, 10, 32];
+	var newLine = [10];
   var currentIndex = 0;
   self.buffer = null;
   var fileName = opts.file;
@@ -63,7 +64,7 @@ function File(opts) {
     if (currentIndex < 0) {
       return t.BEGINNING_OF_FILE;
     }
-    if (isWhiteSpace(self.buffer[currentIndex])) {
+    if (self.buffer[currentIndex]) {
       return self.pushBack();
     }
     return String.fromCharCode(self.buffer[currentIndex]);
@@ -76,13 +77,51 @@ function File(opts) {
     return String.fromCharCode(self.buffer[currentIndex]);
   }
 	self.currentLineNumber = function() {
-		var ln = 0;
+		var ln = 1;
 		for (var i = 0; i < currentIndex; i++) {
-			if (self.buffer[i] == "\n") {
+			if (self.isNewLine(self.buffer[i])) {
 				ln++;
 			}
 		}
 		return ln;
+	}
+	self.currentLine = function() {
+		var ln = self.currentLineNumber();
+		var firstCharOfLine = 0;
+		var lineCursor = 1;
+		var indexOfErrOnLine = 0;
+		for (var i = 0; lineCursor < ln; i++) {
+			firstCharOfLine++;
+			if (self.isNewLine(self.buffer[i])) {
+				lineCursor++;
+			}
+			indexOfErrOnLine = (currentIndex-firstCharOfLine)-1;
+		}
+		var lastCharOfLine = firstCharOfLine;
+		for (var i =0;!self.isNewLine(self.buffer[lastCharOfLine]);i++) {
+			lastCharOfLine++;
+		}
+		var line="";
+		for (var i = firstCharOfLine; i < lastCharOfLine;i++) {
+			line+= String.fromCharCode(self.buffer[i]);
+		}
+		return {text:line.replace(/\t/g," "),index:indexOfErrOnLine};
+	}
+	self.strPointerToErr = function() {
+		var line = self.currentLine();
+		var pointer = "";
+		for (var i = 0; i <line.text.length; i++) {
+			if(i == line.index) {
+				pointer+= "^";
+			}
+			else {
+				pointer+= " ";
+			}
+		}
+		return pointer;
+	}
+	self.isNewLine = function(c) {
+		return newLine.indexOf(c) > -1;
 	}
 }
 
@@ -93,6 +132,9 @@ module.exports.openFile = function(onData) {
     onData: onData
   });
 }
+module.exports.lineNumber = function() {return f.currentLineNumber()};
+module.exports.line = function() {return f.currentLine()};
+module.exports.pointerToErr = function() {return f.strPointerToErr()};
 
 function lexNotEqual(ch) {
   if (ch == "!") {
