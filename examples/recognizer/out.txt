@@ -1,0 +1,330 @@
+beginning parse
+statementList()
+statement()
+	variableDeclaration()
+		matching treat
+		matching id
+		matching eq
+		matching expression
+		expr()
+			matching primary
+			primary()
+				matching string
+			operatorPending()
+				current type LEXEME: { type: SEMI }
+		matching semi
+statementList()
+statement()
+	variableDeclaration()
+		matching treat
+		matching id
+		matching eq
+		matching expression
+		expr()
+			matching primary
+			primary()
+				matching int
+			operatorPending()
+				current type LEXEME: { type: PLUS }
+			operator pending
+			operator()
+			expr()
+				matching primary
+				primary()
+					matching int
+				operatorPending()
+					current type LEXEME: { type: SEMI }
+		matching semi
+statementList()
+statement()
+	variableDeclaration()
+		matching treat
+		matching id
+		matching eq
+		matching expression
+		expr()
+			matching primary
+			primary()
+				Begins with ID
+			operatorPending()
+				current type LEXEME: { type: DIVIDE }
+			operator pending
+			operator()
+			expr()
+				matching primary
+				primary()
+					matching int
+				operatorPending()
+					current type LEXEME: { type: SEMI }
+		matching semi
+statementList()
+statement()
+	functionDeclaration()
+		optId()
+		optIdList()
+			idList()
+				idList()
+		block()
+			optStatementList()
+				statementList()
+				statement()
+					expr()
+						matching primary
+						primary()
+							Begins with ID
+							optArgList()
+							argList()
+								expr()
+									matching primary
+									primary()
+										matching int
+									operatorPending()
+										current type LEXEME: { type: PLUS }
+									operator pending
+									operator()
+									expr()
+										matching primary
+										primary()
+											matching int
+										operatorPending()
+											current type LEXEME: { type: COMMA }
+								argList()
+									expr()
+										matching primary
+										primary()
+											matching int
+										operatorPending()
+											current type LEXEME: { type: PLUS }
+										operator pending
+										operator()
+										expr()
+											matching primary
+											primary()
+												matching int
+											operatorPending()
+												current type LEXEME: { type: CP }
+						operatorPending()
+							current type LEXEME: { type: SEMI }
+					matching semi
+		matching close bracket
+statementList()
+statement()
+ifStatement()
+	expr()
+		matching primary
+		primary()
+			Begins with ID
+		operatorPending()
+			current type LEXEME: { type: STRICTLESS }
+		logic operator pending
+		logicalOperator()
+		expr()
+			matching primary
+			primary()
+				matching int
+			operatorPending()
+				current type LEXEME: { type: CP }
+	block()
+		optStatementList()
+			statementList()
+			statement()
+				expr()
+					matching primary
+					primary()
+						Begins with ID
+						optArgList()
+						argList()
+							expr()
+								matching primary
+								primary()
+									matching string
+								operatorPending()
+									current type LEXEME: { type: CP }
+					operatorPending()
+						current type LEXEME: { type: SEMI }
+				matching semi
+			statementList()
+			statement()
+				variableDeclaration()
+					matching treat
+					matching id
+					matching eq
+					matching expression
+					expr()
+						matching primary
+						primary()
+							matching int
+						operatorPending()
+							current type LEXEME: { type: SEMI }
+					matching semi
+			statementList()
+			statement()
+				whileLoop()
+					expr()
+						matching primary
+						primary()
+							Begins with ID
+						operatorPending()
+							current type LEXEME: { type: STRICTLESS }
+						logic operator pending
+						logicalOperator()
+						expr()
+							matching primary
+							primary()
+								matching int
+							operatorPending()
+								current type LEXEME: { type: CP }
+					block()
+						optStatementList()
+							statementList()
+							statement()
+								expr()
+									matching primary
+									primary()
+										Begins with ID
+										optArgList()
+										argList()
+											expr()
+												matching primary
+												primary()
+													matching string
+												operatorPending()
+													current type LEXEME: { type: COMMA }
+											argList()
+												expr()
+													matching primary
+													primary()
+														Begins with ID
+													operatorPending()
+														current type LEXEME: { type: CP }
+									operatorPending()
+										current type LEXEME: { type: SEMI }
+								matching semi
+							statementList()
+							statement()
+								ifStatement()
+									expr()
+										matching primary
+										primary()
+											Begins with ID
+										operatorPending()
+											current type LEXEME: { type: DIVIDE }
+										operator pending
+										operator()
+										expr()
+											matching primary
+											primary()
+												matching int
+											operatorPending()
+												current type LEXEME: { type: EQUALTO }
+											logic operator pending
+											logicalOperator()
+											expr()
+												matching primary
+												primary()
+													matching int
+												operatorPending()
+													current type LEXEME: { type: CP }
+									block()
+										optStatementList()
+											statementList()
+											statement()
+												functionDeclaration()
+													optId()
+													optIdList()
+														idList()
+													block()
+														optStatementList()
+															statementList()
+															statement()
+																expr()
+																	matching primary
+																	primary()
+																		Begins with ID
+																		optArgList()
+																		argList()
+																			expr()
+																				matching primary
+																				primary()
+																					Begins with ID
+																				operatorPending()
+																					current type LEXEME: { type: CP }
+																	operatorPending()
+																		current type LEXEME: { type: SEMI }
+																matching semi
+													matching close bracket
+											optArgList()
+											argList()
+												expr()
+													matching primary
+													primary()
+														Begins with ID
+													operatorPending()
+														current type LEXEME: { type: CP }
+										statementList()
+										statement()
+							matching close bracket
+						optElseStatement()
+							elseStatement()
+								ifStatement()
+									expr()
+										matching primary
+										primary()
+											Begins with ID
+											optArgList()
+											argList()
+												expr()
+													matching primary
+													primary()
+														Begins with ID
+													operatorPending()
+														current type LEXEME: { type: CP }
+										operatorPending()
+											current type LEXEME: { type: CP }
+									block()
+										optStatementList()
+											statementList()
+											statement()
+												expr()
+													matching primary
+													primary()
+														Begins with ID
+														optArgList()
+														argList()
+															expr()
+																matching primary
+																primary()
+																	matching string
+																operatorPending()
+																	current type LEXEME: { type: CP }
+													operatorPending()
+														current type LEXEME: { type: SEMI }
+												matching semi
+									matching close bracket
+								optElseStatement()
+									elseStatement()
+										block()
+											optStatementList()
+												statementList()
+												statement()
+													expr()
+														matching primary
+														primary()
+															Begins with ID
+															optArgList()
+															argList()
+																expr()
+																	matching primary
+																	primary()
+																		matching string
+																	operatorPending()
+																		current type LEXEME: { type: CP }
+														operatorPending()
+															current type LEXEME: { type: SEMI }
+													matching semi
+										matching close bracket
+matching close bracket
+matching close bracket
+optElseStatement()
+Successfully recognized document
+Run with debug (-d) flag for more output
