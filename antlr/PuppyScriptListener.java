@@ -167,16 +167,6 @@ public interface PuppyScriptListener extends ParseTreeListener {
 	 */
 	void exitFunctionDeclaration(PuppyScriptParser.FunctionDeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link PuppyScriptParser#functionCall}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunctionCall(PuppyScriptParser.FunctionCallContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PuppyScriptParser#functionCall}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunctionCall(PuppyScriptParser.FunctionCallContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link PuppyScriptParser#variableDeclaration}.
 	 * @param ctx the parse tree
 	 */
@@ -246,14 +236,4 @@ public interface PuppyScriptListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPrimary(PuppyScriptParser.PrimaryContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PuppyScriptParser#assign}.
-	 * @param ctx the parse tree
-	 */
-	void enterAssign(PuppyScriptParser.AssignContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PuppyScriptParser#assign}.
-	 * @param ctx the parse tree
-	 */
-	void exitAssign(PuppyScriptParser.AssignContext ctx);
 }

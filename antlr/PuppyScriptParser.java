@@ -16,38 +16,37 @@ public class PuppyScriptParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		SEMI=1, PLUS=2, MINUS=3, TIMES=4, DIVIDE=5, BOOLEAN=6, STRING=7, INT=8, 
-		RUFF=9, OP=10, CP=11, OCB=12, CCB=13, RELSE=14, WHILE=15, GREATER=16, 
-		EQUALTO=17, BR=18, LESS=19, STRICTGREATER=20, STRICTLESS=21, NOT=22, OR=23, 
-		EQ=24, TRICK=25, ID=26, OSQUARE=27, CSQUARE=28, COMMA=29, VAR=30;
+		BR=1, CCB=2, COMMA=3, CP=4, CSQUARE=5, DIVIDE=6, EQ=7, MINUS=8, OCB=9, 
+		OP=10, OSQUARE=11, PLUS=12, SEMI=13, STRICTGREATER=14, STRICTLESS=15, 
+		TIMES=16, EQUALTO=17, GREATER=18, LESS=19, NOT=20, OR=21, AND=22, RUFF=23, 
+		RELSE=24, TREAT=25, TRICK=26, WHILE=27, BOOLEAN=28, INT=29, ID=30, STRING=31, 
+		ESC_SEQ=32;
 	public static final int
 		RULE_statement = 0, RULE_statementList = 1, RULE_optStatementList = 2, 
 		RULE_ifStatement = 3, RULE_elseStatement = 4, RULE_optElseStatement = 5, 
 		RULE_whileLoop = 6, RULE_block = 7, RULE_expr = 8, RULE_optExprList = 9, 
 		RULE_exprList = 10, RULE_assignOperator = 11, RULE_operator = 12, RULE_logicalOperator = 13, 
-		RULE_lambdaCall = 14, RULE_functionDeclaration = 15, RULE_functionCall = 16, 
-		RULE_variableDeclaration = 17, RULE_argList = 18, RULE_optArgList = 19, 
-		RULE_idList = 20, RULE_optId = 21, RULE_optIdList = 22, RULE_primary = 23, 
-		RULE_assign = 24;
+		RULE_lambdaCall = 14, RULE_functionDeclaration = 15, RULE_variableDeclaration = 16, 
+		RULE_argList = 17, RULE_optArgList = 18, RULE_idList = 19, RULE_optId = 20, 
+		RULE_optIdList = 21, RULE_primary = 22;
 	public static final String[] ruleNames = {
 		"statement", "statementList", "optStatementList", "ifStatement", "elseStatement", 
 		"optElseStatement", "whileLoop", "block", "expr", "optExprList", "exprList", 
 		"assignOperator", "operator", "logicalOperator", "lambdaCall", "functionDeclaration", 
-		"functionCall", "variableDeclaration", "argList", "optArgList", "idList", 
-		"optId", "optIdList", "primary", "assign"
+		"variableDeclaration", "argList", "optArgList", "idList", "optId", "optIdList", 
+		"primary"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "';'", "'+'", "'-'", "'*'", "'/'", null, null, null, "'ruff'", "'('", 
-		"')'", "'{'", "'}'", "'relse'", "'while'", "'>='", "'=='", "'\n'", "'<='", 
-		"'>'", "'<'", "'!='", "'||'", "'='", "'trick'", null, "'['", "']'", "','", 
-		"'var'"
+		null, "'\n'", "'}'", "','", "')'", "']'", "'/'", "'='", "'-'", "'{'", 
+		"'('", "'['", "'+'", "';'", "'>'", "'<'", "'*'", "'=='", "'>='", "'<='", 
+		"'!='", "'||'", "'&&'", "'ruff'", "'relse'", "'treat'", "'trick'", "'while'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "SEMI", "PLUS", "MINUS", "TIMES", "DIVIDE", "BOOLEAN", "STRING", 
-		"INT", "RUFF", "OP", "CP", "OCB", "CCB", "RELSE", "WHILE", "GREATER", 
-		"EQUALTO", "BR", "LESS", "STRICTGREATER", "STRICTLESS", "NOT", "OR", "EQ", 
-		"TRICK", "ID", "OSQUARE", "CSQUARE", "COMMA", "VAR"
+		null, "BR", "CCB", "COMMA", "CP", "CSQUARE", "DIVIDE", "EQ", "MINUS", 
+		"OCB", "OP", "OSQUARE", "PLUS", "SEMI", "STRICTGREATER", "STRICTLESS", 
+		"TIMES", "EQUALTO", "GREATER", "LESS", "NOT", "OR", "AND", "RUFF", "RELSE", 
+		"TREAT", "TRICK", "WHILE", "BOOLEAN", "INT", "ID", "STRING", "ESC_SEQ"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -137,65 +136,65 @@ public class PuppyScriptParser extends Parser {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_statement);
 		try {
-			setState(62);
+			setState(58);
 			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(50);
+				setState(46);
 				variableDeclaration();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(51);
+				setState(47);
 				ifStatement();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(52);
+				setState(48);
 				whileLoop();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(53);
+				setState(49);
 				functionDeclaration();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(54);
+				setState(50);
 				lambdaCall();
-				setState(55);
+				setState(51);
 				match(SEMI);
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(57);
+				setState(53);
 				expr(0);
-				setState(58);
+				setState(54);
 				match(SEMI);
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(60);
+				setState(56);
 				match(SEMI);
 				}
 				break;
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(61);
+				setState(57);
 				match(BR);
 				}
 				break;
@@ -237,21 +236,21 @@ public class PuppyScriptParser extends Parser {
 		StatementListContext _localctx = new StatementListContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_statementList);
 		try {
-			setState(68);
+			setState(64);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(64);
+				setState(60);
 				statement();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(65);
+				setState(61);
 				statement();
-				setState(66);
+				setState(62);
 				statementList();
 				}
 				break;
@@ -293,11 +292,11 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(71);
+			setState(67);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << BOOLEAN) | (1L << STRING) | (1L << INT) | (1L << RUFF) | (1L << OP) | (1L << WHILE) | (1L << BR) | (1L << TRICK) | (1L << ID) | (1L << OSQUARE) | (1L << VAR))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BR) | (1L << OP) | (1L << OSQUARE) | (1L << SEMI) | (1L << RUFF) | (1L << TREAT) | (1L << TRICK) | (1L << WHILE) | (1L << BOOLEAN) | (1L << INT) | (1L << ID) | (1L << STRING))) != 0)) {
 				{
-				setState(70);
+				setState(66);
 				statementList();
 				}
 			}
@@ -348,17 +347,17 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(73);
+			setState(69);
 			match(RUFF);
-			setState(74);
+			setState(70);
 			match(OP);
-			setState(75);
+			setState(71);
 			expr(0);
-			setState(76);
+			setState(72);
 			match(CP);
-			setState(77);
+			setState(73);
 			block();
-			setState(78);
+			setState(74);
 			optElseStatement();
 			}
 		}
@@ -399,23 +398,23 @@ public class PuppyScriptParser extends Parser {
 		ElseStatementContext _localctx = new ElseStatementContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_elseStatement);
 		try {
-			setState(84);
+			setState(80);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(80);
+				setState(76);
 				match(RELSE);
-				setState(81);
+				setState(77);
 				ifStatement();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(82);
+				setState(78);
 				match(RELSE);
-				setState(83);
+				setState(79);
 				block();
 				}
 				break;
@@ -457,11 +456,11 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(87);
+			setState(83);
 			_la = _input.LA(1);
 			if (_la==RELSE) {
 				{
-				setState(86);
+				setState(82);
 				elseStatement();
 				}
 			}
@@ -509,15 +508,15 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(89);
+			setState(85);
 			match(WHILE);
-			setState(90);
+			setState(86);
 			match(OP);
-			setState(91);
+			setState(87);
 			expr(0);
-			setState(92);
+			setState(88);
 			match(CP);
-			setState(93);
+			setState(89);
 			block();
 			}
 		}
@@ -558,11 +557,11 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(95);
+			setState(91);
 			match(OCB);
-			setState(96);
+			setState(92);
 			optStatementList();
-			setState(97);
+			setState(93);
 			match(CCB);
 			}
 		}
@@ -580,9 +579,6 @@ public class PuppyScriptParser extends Parser {
 	public static class ExprContext extends ParserRuleContext {
 		public PrimaryContext primary() {
 			return getRuleContext(PrimaryContext.class,0);
-		}
-		public FunctionDeclarationContext functionDeclaration() {
-			return getRuleContext(FunctionDeclarationContext.class,0);
 		}
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
@@ -628,41 +624,30 @@ public class PuppyScriptParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(102);
-			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
-			case 1:
-				{
-				setState(100);
-				primary();
-				}
-				break;
-			case 2:
-				{
-				setState(101);
-				functionDeclaration();
-				}
-				break;
+			{
+			setState(96);
+			primary();
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(118);
+			setState(112);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(116);
-					switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+					setState(110);
+					switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 					case 1:
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(104);
+						setState(98);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(105);
+						setState(99);
 						operator();
-						setState(106);
+						setState(100);
 						expr(4);
 						}
 						break;
@@ -670,11 +655,11 @@ public class PuppyScriptParser extends Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(108);
+						setState(102);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-						setState(109);
+						setState(103);
 						logicalOperator();
-						setState(110);
+						setState(104);
 						expr(3);
 						}
 						break;
@@ -682,20 +667,20 @@ public class PuppyScriptParser extends Parser {
 						{
 						_localctx = new ExprContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(112);
+						setState(106);
 						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-						setState(113);
+						setState(107);
 						assignOperator();
-						setState(114);
+						setState(108);
 						expr(2);
 						}
 						break;
 					}
 					} 
 				}
-				setState(120);
+				setState(114);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			}
 			}
 		}
@@ -735,11 +720,11 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(122);
+			setState(116);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOLEAN) | (1L << STRING) | (1L << INT) | (1L << OP) | (1L << TRICK) | (1L << ID) | (1L << OSQUARE))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << OP) | (1L << OSQUARE) | (1L << TRICK) | (1L << BOOLEAN) | (1L << INT) | (1L << ID) | (1L << STRING))) != 0)) {
 				{
-				setState(121);
+				setState(115);
 				exprList();
 				}
 			}
@@ -783,23 +768,23 @@ public class PuppyScriptParser extends Parser {
 		ExprListContext _localctx = new ExprListContext(_ctx, getState());
 		enterRule(_localctx, 20, RULE_exprList);
 		try {
-			setState(129);
-			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+			setState(123);
+			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(124);
+				setState(118);
 				expr(0);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(125);
+				setState(119);
 				expr(0);
-				setState(126);
+				setState(120);
 				match(COMMA);
-				setState(127);
+				setState(121);
 				exprList();
 				}
 				break;
@@ -838,7 +823,7 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(131);
+			setState(125);
 			match(EQ);
 			}
 		}
@@ -879,9 +864,9 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(133);
+			setState(127);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLUS) | (1L << MINUS) | (1L << TIMES) | (1L << DIVIDE))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DIVIDE) | (1L << MINUS) | (1L << PLUS) | (1L << TIMES))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -928,9 +913,9 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(135);
+			setState(129);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << GREATER) | (1L << EQUALTO) | (1L << LESS) | (1L << STRICTGREATER) | (1L << STRICTLESS) | (1L << NOT) | (1L << OR))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STRICTGREATER) | (1L << STRICTLESS) | (1L << EQUALTO) | (1L << GREATER) | (1L << LESS) | (1L << NOT) | (1L << OR))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -977,13 +962,13 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(137);
+			setState(131);
 			functionDeclaration();
-			setState(138);
+			setState(132);
 			match(OP);
-			setState(139);
+			setState(133);
 			optArgList();
-			setState(140);
+			setState(134);
 			match(CP);
 			}
 		}
@@ -1031,17 +1016,17 @@ public class PuppyScriptParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(142);
+			setState(136);
 			match(TRICK);
-			setState(143);
+			setState(137);
 			optId();
-			setState(144);
+			setState(138);
 			match(OP);
-			setState(145);
+			setState(139);
 			optIdList();
-			setState(146);
+			setState(140);
 			match(CP);
-			setState(147);
+			setState(141);
 			block();
 			}
 		}
@@ -1056,56 +1041,8 @@ public class PuppyScriptParser extends Parser {
 		return _localctx;
 	}
 
-	public static class FunctionCallContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(PuppyScriptParser.ID, 0); }
-		public TerminalNode OP() { return getToken(PuppyScriptParser.OP, 0); }
-		public OptExprListContext optExprList() {
-			return getRuleContext(OptExprListContext.class,0);
-		}
-		public TerminalNode CP() { return getToken(PuppyScriptParser.CP, 0); }
-		public FunctionCallContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_functionCall; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof PuppyScriptListener ) ((PuppyScriptListener)listener).enterFunctionCall(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof PuppyScriptListener ) ((PuppyScriptListener)listener).exitFunctionCall(this);
-		}
-	}
-
-	public final FunctionCallContext functionCall() throws RecognitionException {
-		FunctionCallContext _localctx = new FunctionCallContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_functionCall);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(149);
-			match(ID);
-			setState(150);
-			match(OP);
-			setState(151);
-			optExprList();
-			setState(152);
-			match(CP);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
 	public static class VariableDeclarationContext extends ParserRuleContext {
-		public TerminalNode VAR() { return getToken(PuppyScriptParser.VAR, 0); }
+		public TerminalNode TREAT() { return getToken(PuppyScriptParser.TREAT, 0); }
 		public TerminalNode ID() { return getToken(PuppyScriptParser.ID, 0); }
 		public TerminalNode EQ() { return getToken(PuppyScriptParser.EQ, 0); }
 		public ExprContext expr() {
@@ -1128,19 +1065,19 @@ public class PuppyScriptParser extends Parser {
 
 	public final VariableDeclarationContext variableDeclaration() throws RecognitionException {
 		VariableDeclarationContext _localctx = new VariableDeclarationContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_variableDeclaration);
+		enterRule(_localctx, 32, RULE_variableDeclaration);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(154);
-			match(VAR);
-			setState(155);
+			setState(143);
+			match(TREAT);
+			setState(144);
 			match(ID);
-			setState(156);
+			setState(145);
 			match(EQ);
-			setState(157);
+			setState(146);
 			expr(0);
-			setState(158);
+			setState(147);
 			match(SEMI);
 			}
 		}
@@ -1179,25 +1116,25 @@ public class PuppyScriptParser extends Parser {
 
 	public final ArgListContext argList() throws RecognitionException {
 		ArgListContext _localctx = new ArgListContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_argList);
+		enterRule(_localctx, 34, RULE_argList);
 		try {
-			setState(165);
-			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
+			setState(154);
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(160);
+				setState(149);
 				expr(0);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(161);
+				setState(150);
 				expr(0);
-				setState(162);
+				setState(151);
 				match(COMMA);
-				setState(163);
+				setState(152);
 				argList();
 				}
 				break;
@@ -1234,16 +1171,16 @@ public class PuppyScriptParser extends Parser {
 
 	public final OptArgListContext optArgList() throws RecognitionException {
 		OptArgListContext _localctx = new OptArgListContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_optArgList);
+		enterRule(_localctx, 36, RULE_optArgList);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(168);
+			setState(157);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOLEAN) | (1L << STRING) | (1L << INT) | (1L << OP) | (1L << TRICK) | (1L << ID) | (1L << OSQUARE))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << OP) | (1L << OSQUARE) | (1L << TRICK) | (1L << BOOLEAN) | (1L << INT) | (1L << ID) | (1L << STRING))) != 0)) {
 				{
-				setState(167);
+				setState(156);
 				argList();
 				}
 			}
@@ -1283,25 +1220,25 @@ public class PuppyScriptParser extends Parser {
 
 	public final IdListContext idList() throws RecognitionException {
 		IdListContext _localctx = new IdListContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_idList);
+		enterRule(_localctx, 38, RULE_idList);
 		try {
-			setState(174);
-			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
+			setState(163);
+			switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(170);
+				setState(159);
 				match(ID);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(171);
+				setState(160);
 				match(ID);
-				setState(172);
+				setState(161);
 				match(COMMA);
-				setState(173);
+				setState(162);
 				idList();
 				}
 				break;
@@ -1336,16 +1273,16 @@ public class PuppyScriptParser extends Parser {
 
 	public final OptIdContext optId() throws RecognitionException {
 		OptIdContext _localctx = new OptIdContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_optId);
+		enterRule(_localctx, 40, RULE_optId);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(177);
+			setState(166);
 			_la = _input.LA(1);
 			if (_la==ID) {
 				{
-				setState(176);
+				setState(165);
 				match(ID);
 				}
 			}
@@ -1383,16 +1320,16 @@ public class PuppyScriptParser extends Parser {
 
 	public final OptIdListContext optIdList() throws RecognitionException {
 		OptIdListContext _localctx = new OptIdListContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_optIdList);
+		enterRule(_localctx, 42, RULE_optIdList);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(180);
+			setState(169);
 			_la = _input.LA(1);
 			if (_la==ID) {
 				{
-				setState(179);
+				setState(168);
 				idList();
 				}
 			}
@@ -1450,159 +1387,100 @@ public class PuppyScriptParser extends Parser {
 
 	public final PrimaryContext primary() throws RecognitionException {
 		PrimaryContext _localctx = new PrimaryContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_primary);
+		enterRule(_localctx, 44, RULE_primary);
 		try {
-			setState(206);
-			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
+			setState(195);
+			switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(182);
+				setState(171);
 				match(ID);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(183);
+				setState(172);
 				match(STRING);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(184);
+				setState(173);
 				match(BOOLEAN);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(185);
+				setState(174);
 				match(INT);
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(186);
+				setState(175);
 				match(OSQUARE);
-				setState(187);
+				setState(176);
 				argList();
-				setState(188);
+				setState(177);
 				match(CSQUARE);
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(190);
+				setState(179);
 				match(OP);
-				setState(191);
+				setState(180);
 				expr(0);
-				setState(192);
+				setState(181);
 				match(CP);
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(194);
+				setState(183);
 				lambdaCall();
 				}
 				break;
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(195);
+				setState(184);
 				functionDeclaration();
 				}
 				break;
 			case 9:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(196);
+				setState(185);
 				match(ID);
-				setState(197);
+				setState(186);
 				match(OP);
-				setState(198);
+				setState(187);
 				optArgList();
-				setState(199);
+				setState(188);
 				match(CP);
 				}
 				break;
 			case 10:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(201);
+				setState(190);
 				match(ID);
-				setState(202);
+				setState(191);
 				match(OSQUARE);
-				setState(203);
+				setState(192);
 				expr(0);
-				setState(204);
+				setState(193);
 				match(CSQUARE);
 				}
 				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class AssignContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(PuppyScriptParser.ID, 0); }
-		public List<TerminalNode> EQ() { return getTokens(PuppyScriptParser.EQ); }
-		public TerminalNode EQ(int i) {
-			return getToken(PuppyScriptParser.EQ, i);
-		}
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public AssignContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_assign; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof PuppyScriptListener ) ((PuppyScriptListener)listener).enterAssign(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof PuppyScriptListener ) ((PuppyScriptListener)listener).exitAssign(this);
-		}
-	}
-
-	public final AssignContext assign() throws RecognitionException {
-		AssignContext _localctx = new AssignContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_assign);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(208);
-			match(ID);
-			setState(209);
-			match(EQ);
-			setState(210);
-			expr(0);
-			{
-			setState(211);
-			expr(0);
-			setState(212);
-			match(EQ);
-			setState(213);
-			expr(0);
-			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1636,73 +1514,66 @@ public class PuppyScriptParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3 \u00da\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\"\u00c8\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
-		"\4\32\t\32\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\5\2A\n\2\3"+
-		"\3\3\3\3\3\3\3\5\3G\n\3\3\4\5\4J\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3"+
-		"\6\3\6\3\6\5\6W\n\6\3\7\5\7Z\n\7\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3"+
-		"\t\3\n\3\n\3\n\5\ni\n\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
-		"\n\7\nw\n\n\f\n\16\nz\13\n\3\13\5\13}\n\13\3\f\3\f\3\f\3\f\3\f\5\f\u0084"+
-		"\n\f\3\r\3\r\3\16\3\16\3\17\3\17\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3"+
-		"\21\3\21\3\21\3\21\3\21\3\22\3\22\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3"+
-		"\23\3\23\3\24\3\24\3\24\3\24\3\24\5\24\u00a8\n\24\3\25\5\25\u00ab\n\25"+
-		"\3\26\3\26\3\26\3\26\5\26\u00b1\n\26\3\27\5\27\u00b4\n\27\3\30\5\30\u00b7"+
-		"\n\30\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31"+
-		"\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\5\31\u00d1\n\31"+
-		"\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\2\3\22\33\2\4\6\b\n\f\16\20\22"+
-		"\24\26\30\32\34\36 \"$&(*,.\60\62\2\4\3\2\4\7\4\2\22\23\25\31\u00df\2"+
-		"@\3\2\2\2\4F\3\2\2\2\6I\3\2\2\2\bK\3\2\2\2\nV\3\2\2\2\fY\3\2\2\2\16[\3"+
-		"\2\2\2\20a\3\2\2\2\22h\3\2\2\2\24|\3\2\2\2\26\u0083\3\2\2\2\30\u0085\3"+
-		"\2\2\2\32\u0087\3\2\2\2\34\u0089\3\2\2\2\36\u008b\3\2\2\2 \u0090\3\2\2"+
-		"\2\"\u0097\3\2\2\2$\u009c\3\2\2\2&\u00a7\3\2\2\2(\u00aa\3\2\2\2*\u00b0"+
-		"\3\2\2\2,\u00b3\3\2\2\2.\u00b6\3\2\2\2\60\u00d0\3\2\2\2\62\u00d2\3\2\2"+
-		"\2\64A\5$\23\2\65A\5\b\5\2\66A\5\16\b\2\67A\5 \21\289\5\36\20\29:\7\3"+
-		"\2\2:A\3\2\2\2;<\5\22\n\2<=\7\3\2\2=A\3\2\2\2>A\7\3\2\2?A\7\24\2\2@\64"+
-		"\3\2\2\2@\65\3\2\2\2@\66\3\2\2\2@\67\3\2\2\2@8\3\2\2\2@;\3\2\2\2@>\3\2"+
-		"\2\2@?\3\2\2\2A\3\3\2\2\2BG\5\2\2\2CD\5\2\2\2DE\5\4\3\2EG\3\2\2\2FB\3"+
-		"\2\2\2FC\3\2\2\2G\5\3\2\2\2HJ\5\4\3\2IH\3\2\2\2IJ\3\2\2\2J\7\3\2\2\2K"+
-		"L\7\13\2\2LM\7\f\2\2MN\5\22\n\2NO\7\r\2\2OP\5\20\t\2PQ\5\f\7\2Q\t\3\2"+
-		"\2\2RS\7\20\2\2SW\5\b\5\2TU\7\20\2\2UW\5\20\t\2VR\3\2\2\2VT\3\2\2\2W\13"+
-		"\3\2\2\2XZ\5\n\6\2YX\3\2\2\2YZ\3\2\2\2Z\r\3\2\2\2[\\\7\21\2\2\\]\7\f\2"+
-		"\2]^\5\22\n\2^_\7\r\2\2_`\5\20\t\2`\17\3\2\2\2ab\7\16\2\2bc\5\6\4\2cd"+
-		"\7\17\2\2d\21\3\2\2\2ef\b\n\1\2fi\5\60\31\2gi\5 \21\2he\3\2\2\2hg\3\2"+
-		"\2\2ix\3\2\2\2jk\f\5\2\2kl\5\32\16\2lm\5\22\n\6mw\3\2\2\2no\f\4\2\2op"+
-		"\5\34\17\2pq\5\22\n\5qw\3\2\2\2rs\f\3\2\2st\5\30\r\2tu\5\22\n\4uw\3\2"+
-		"\2\2vj\3\2\2\2vn\3\2\2\2vr\3\2\2\2wz\3\2\2\2xv\3\2\2\2xy\3\2\2\2y\23\3"+
-		"\2\2\2zx\3\2\2\2{}\5\26\f\2|{\3\2\2\2|}\3\2\2\2}\25\3\2\2\2~\u0084\5\22"+
-		"\n\2\177\u0080\5\22\n\2\u0080\u0081\7\37\2\2\u0081\u0082\5\26\f\2\u0082"+
-		"\u0084\3\2\2\2\u0083~\3\2\2\2\u0083\177\3\2\2\2\u0084\27\3\2\2\2\u0085"+
-		"\u0086\7\32\2\2\u0086\31\3\2\2\2\u0087\u0088\t\2\2\2\u0088\33\3\2\2\2"+
-		"\u0089\u008a\t\3\2\2\u008a\35\3\2\2\2\u008b\u008c\5 \21\2\u008c\u008d"+
-		"\7\f\2\2\u008d\u008e\5(\25\2\u008e\u008f\7\r\2\2\u008f\37\3\2\2\2\u0090"+
-		"\u0091\7\33\2\2\u0091\u0092\5,\27\2\u0092\u0093\7\f\2\2\u0093\u0094\5"+
-		".\30\2\u0094\u0095\7\r\2\2\u0095\u0096\5\20\t\2\u0096!\3\2\2\2\u0097\u0098"+
-		"\7\34\2\2\u0098\u0099\7\f\2\2\u0099\u009a\5\24\13\2\u009a\u009b\7\r\2"+
-		"\2\u009b#\3\2\2\2\u009c\u009d\7 \2\2\u009d\u009e\7\34\2\2\u009e\u009f"+
-		"\7\32\2\2\u009f\u00a0\5\22\n\2\u00a0\u00a1\7\3\2\2\u00a1%\3\2\2\2\u00a2"+
-		"\u00a8\5\22\n\2\u00a3\u00a4\5\22\n\2\u00a4\u00a5\7\37\2\2\u00a5\u00a6"+
-		"\5&\24\2\u00a6\u00a8\3\2\2\2\u00a7\u00a2\3\2\2\2\u00a7\u00a3\3\2\2\2\u00a8"+
-		"\'\3\2\2\2\u00a9\u00ab\5&\24\2\u00aa\u00a9\3\2\2\2\u00aa\u00ab\3\2\2\2"+
-		"\u00ab)\3\2\2\2\u00ac\u00b1\7\34\2\2\u00ad\u00ae\7\34\2\2\u00ae\u00af"+
-		"\7\37\2\2\u00af\u00b1\5*\26\2\u00b0\u00ac\3\2\2\2\u00b0\u00ad\3\2\2\2"+
-		"\u00b1+\3\2\2\2\u00b2\u00b4\7\34\2\2\u00b3\u00b2\3\2\2\2\u00b3\u00b4\3"+
-		"\2\2\2\u00b4-\3\2\2\2\u00b5\u00b7\5*\26\2\u00b6\u00b5\3\2\2\2\u00b6\u00b7"+
-		"\3\2\2\2\u00b7/\3\2\2\2\u00b8\u00d1\7\34\2\2\u00b9\u00d1\7\t\2\2\u00ba"+
-		"\u00d1\7\b\2\2\u00bb\u00d1\7\n\2\2\u00bc\u00bd\7\35\2\2\u00bd\u00be\5"+
-		"&\24\2\u00be\u00bf\7\36\2\2\u00bf\u00d1\3\2\2\2\u00c0\u00c1\7\f\2\2\u00c1"+
-		"\u00c2\5\22\n\2\u00c2\u00c3\7\r\2\2\u00c3\u00d1\3\2\2\2\u00c4\u00d1\5"+
-		"\36\20\2\u00c5\u00d1\5 \21\2\u00c6\u00c7\7\34\2\2\u00c7\u00c8\7\f\2\2"+
-		"\u00c8\u00c9\5(\25\2\u00c9\u00ca\7\r\2\2\u00ca\u00d1\3\2\2\2\u00cb\u00cc"+
-		"\7\34\2\2\u00cc\u00cd\7\35\2\2\u00cd\u00ce\5\22\n\2\u00ce\u00cf\7\36\2"+
-		"\2\u00cf\u00d1\3\2\2\2\u00d0\u00b8\3\2\2\2\u00d0\u00b9\3\2\2\2\u00d0\u00ba"+
-		"\3\2\2\2\u00d0\u00bb\3\2\2\2\u00d0\u00bc\3\2\2\2\u00d0\u00c0\3\2\2\2\u00d0"+
-		"\u00c4\3\2\2\2\u00d0\u00c5\3\2\2\2\u00d0\u00c6\3\2\2\2\u00d0\u00cb\3\2"+
-		"\2\2\u00d1\61\3\2\2\2\u00d2\u00d3\7\34\2\2\u00d3\u00d4\7\32\2\2\u00d4"+
-		"\u00d5\5\22\n\2\u00d5\u00d6\5\22\n\2\u00d6\u00d7\7\32\2\2\u00d7\u00d8"+
-		"\5\22\n\2\u00d8\63\3\2\2\2\22@FIVYhvx|\u0083\u00a7\u00aa\u00b0\u00b3\u00b6"+
-		"\u00d0";
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\3\2\3\2\3"+
+		"\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\5\2=\n\2\3\3\3\3\3\3\3\3\5\3C\n"+
+		"\3\3\4\5\4F\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\5\6S\n\6\3"+
+		"\7\5\7V\n\7\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3"+
+		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\7\nq\n\n\f\n\16\nt\13\n\3\13"+
+		"\5\13w\n\13\3\f\3\f\3\f\3\f\3\f\5\f~\n\f\3\r\3\r\3\16\3\16\3\17\3\17\3"+
+		"\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\22\3\22\3"+
+		"\22\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3\23\5\23\u009d\n\23\3\24\5\24"+
+		"\u00a0\n\24\3\25\3\25\3\25\3\25\5\25\u00a6\n\25\3\26\5\26\u00a9\n\26\3"+
+		"\27\5\27\u00ac\n\27\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30"+
+		"\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30"+
+		"\5\30\u00c6\n\30\3\30\2\3\22\31\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36"+
+		" \"$&(*,.\2\4\6\2\b\b\n\n\16\16\22\22\4\2\20\21\23\27\u00ce\2<\3\2\2\2"+
+		"\4B\3\2\2\2\6E\3\2\2\2\bG\3\2\2\2\nR\3\2\2\2\fU\3\2\2\2\16W\3\2\2\2\20"+
+		"]\3\2\2\2\22a\3\2\2\2\24v\3\2\2\2\26}\3\2\2\2\30\177\3\2\2\2\32\u0081"+
+		"\3\2\2\2\34\u0083\3\2\2\2\36\u0085\3\2\2\2 \u008a\3\2\2\2\"\u0091\3\2"+
+		"\2\2$\u009c\3\2\2\2&\u009f\3\2\2\2(\u00a5\3\2\2\2*\u00a8\3\2\2\2,\u00ab"+
+		"\3\2\2\2.\u00c5\3\2\2\2\60=\5\"\22\2\61=\5\b\5\2\62=\5\16\b\2\63=\5 \21"+
+		"\2\64\65\5\36\20\2\65\66\7\17\2\2\66=\3\2\2\2\678\5\22\n\289\7\17\2\2"+
+		"9=\3\2\2\2:=\7\17\2\2;=\7\3\2\2<\60\3\2\2\2<\61\3\2\2\2<\62\3\2\2\2<\63"+
+		"\3\2\2\2<\64\3\2\2\2<\67\3\2\2\2<:\3\2\2\2<;\3\2\2\2=\3\3\2\2\2>C\5\2"+
+		"\2\2?@\5\2\2\2@A\5\4\3\2AC\3\2\2\2B>\3\2\2\2B?\3\2\2\2C\5\3\2\2\2DF\5"+
+		"\4\3\2ED\3\2\2\2EF\3\2\2\2F\7\3\2\2\2GH\7\31\2\2HI\7\f\2\2IJ\5\22\n\2"+
+		"JK\7\6\2\2KL\5\20\t\2LM\5\f\7\2M\t\3\2\2\2NO\7\32\2\2OS\5\b\5\2PQ\7\32"+
+		"\2\2QS\5\20\t\2RN\3\2\2\2RP\3\2\2\2S\13\3\2\2\2TV\5\n\6\2UT\3\2\2\2UV"+
+		"\3\2\2\2V\r\3\2\2\2WX\7\35\2\2XY\7\f\2\2YZ\5\22\n\2Z[\7\6\2\2[\\\5\20"+
+		"\t\2\\\17\3\2\2\2]^\7\13\2\2^_\5\6\4\2_`\7\4\2\2`\21\3\2\2\2ab\b\n\1\2"+
+		"bc\5.\30\2cr\3\2\2\2de\f\5\2\2ef\5\32\16\2fg\5\22\n\6gq\3\2\2\2hi\f\4"+
+		"\2\2ij\5\34\17\2jk\5\22\n\5kq\3\2\2\2lm\f\3\2\2mn\5\30\r\2no\5\22\n\4"+
+		"oq\3\2\2\2pd\3\2\2\2ph\3\2\2\2pl\3\2\2\2qt\3\2\2\2rp\3\2\2\2rs\3\2\2\2"+
+		"s\23\3\2\2\2tr\3\2\2\2uw\5\26\f\2vu\3\2\2\2vw\3\2\2\2w\25\3\2\2\2x~\5"+
+		"\22\n\2yz\5\22\n\2z{\7\5\2\2{|\5\26\f\2|~\3\2\2\2}x\3\2\2\2}y\3\2\2\2"+
+		"~\27\3\2\2\2\177\u0080\7\t\2\2\u0080\31\3\2\2\2\u0081\u0082\t\2\2\2\u0082"+
+		"\33\3\2\2\2\u0083\u0084\t\3\2\2\u0084\35\3\2\2\2\u0085\u0086\5 \21\2\u0086"+
+		"\u0087\7\f\2\2\u0087\u0088\5&\24\2\u0088\u0089\7\6\2\2\u0089\37\3\2\2"+
+		"\2\u008a\u008b\7\34\2\2\u008b\u008c\5*\26\2\u008c\u008d\7\f\2\2\u008d"+
+		"\u008e\5,\27\2\u008e\u008f\7\6\2\2\u008f\u0090\5\20\t\2\u0090!\3\2\2\2"+
+		"\u0091\u0092\7\33\2\2\u0092\u0093\7 \2\2\u0093\u0094\7\t\2\2\u0094\u0095"+
+		"\5\22\n\2\u0095\u0096\7\17\2\2\u0096#\3\2\2\2\u0097\u009d\5\22\n\2\u0098"+
+		"\u0099\5\22\n\2\u0099\u009a\7\5\2\2\u009a\u009b\5$\23\2\u009b\u009d\3"+
+		"\2\2\2\u009c\u0097\3\2\2\2\u009c\u0098\3\2\2\2\u009d%\3\2\2\2\u009e\u00a0"+
+		"\5$\23\2\u009f\u009e\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0\'\3\2\2\2\u00a1"+
+		"\u00a6\7 \2\2\u00a2\u00a3\7 \2\2\u00a3\u00a4\7\5\2\2\u00a4\u00a6\5(\25"+
+		"\2\u00a5\u00a1\3\2\2\2\u00a5\u00a2\3\2\2\2\u00a6)\3\2\2\2\u00a7\u00a9"+
+		"\7 \2\2\u00a8\u00a7\3\2\2\2\u00a8\u00a9\3\2\2\2\u00a9+\3\2\2\2\u00aa\u00ac"+
+		"\5(\25\2\u00ab\u00aa\3\2\2\2\u00ab\u00ac\3\2\2\2\u00ac-\3\2\2\2\u00ad"+
+		"\u00c6\7 \2\2\u00ae\u00c6\7!\2\2\u00af\u00c6\7\36\2\2\u00b0\u00c6\7\37"+
+		"\2\2\u00b1\u00b2\7\r\2\2\u00b2\u00b3\5$\23\2\u00b3\u00b4\7\7\2\2\u00b4"+
+		"\u00c6\3\2\2\2\u00b5\u00b6\7\f\2\2\u00b6\u00b7\5\22\n\2\u00b7\u00b8\7"+
+		"\6\2\2\u00b8\u00c6\3\2\2\2\u00b9\u00c6\5\36\20\2\u00ba\u00c6\5 \21\2\u00bb"+
+		"\u00bc\7 \2\2\u00bc\u00bd\7\f\2\2\u00bd\u00be\5&\24\2\u00be\u00bf\7\6"+
+		"\2\2\u00bf\u00c6\3\2\2\2\u00c0\u00c1\7 \2\2\u00c1\u00c2\7\r\2\2\u00c2"+
+		"\u00c3\5\22\n\2\u00c3\u00c4\7\7\2\2\u00c4\u00c6\3\2\2\2\u00c5\u00ad\3"+
+		"\2\2\2\u00c5\u00ae\3\2\2\2\u00c5\u00af\3\2\2\2\u00c5\u00b0\3\2\2\2\u00c5"+
+		"\u00b1\3\2\2\2\u00c5\u00b5\3\2\2\2\u00c5\u00b9\3\2\2\2\u00c5\u00ba\3\2"+
+		"\2\2\u00c5\u00bb\3\2\2\2\u00c5\u00c0\3\2\2\2\u00c6/\3\2\2\2\21<BERUpr"+
+		"v}\u009c\u009f\u00a5\u00a8\u00ab\u00c5";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

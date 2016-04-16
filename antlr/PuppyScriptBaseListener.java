@@ -207,18 +207,6 @@ public class PuppyScriptBaseListener implements PuppyScriptListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionCall(PuppyScriptParser.FunctionCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunctionCall(PuppyScriptParser.FunctionCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterVariableDeclaration(PuppyScriptParser.VariableDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -298,18 +286,6 @@ public class PuppyScriptBaseListener implements PuppyScriptListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPrimary(PuppyScriptParser.PrimaryContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAssign(PuppyScriptParser.AssignContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAssign(PuppyScriptParser.AssignContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

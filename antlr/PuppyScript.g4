@@ -71,7 +71,7 @@ lambdaCall: functionDeclaration OP optArgList CP;
 // declarations
 functionDeclaration: TRICK optId OP optIdList CP block;
 
-variableDeclaration: VAR ID EQ expr SEMI;
+variableDeclaration: TREAT ID EQ expr SEMI;
 
 // declaration components
 argList: expr
